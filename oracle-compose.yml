@@ -1,0 +1,22 @@
+
+services:
+  oracle-xe-21c:
+    image: gvenzl/oracle-xe:21-slim
+    container_name: oracle-xe-21c
+    ports:
+      - "1521:1521"  # Port for SQL*Net connections
+      - "5500:5500"  # Port for Oracle Enterprise Manager
+    environment:
+      ORACLE_PASSWORD: oracle  # Password for SYS, SYSTEM, and PDBADMIN users
+    volumes:
+      - oracle_data:/opt/oracle/oradata  # Persistent storage for database files
+    restart: always  # Ensures the container restarts automatically
+
+volumes:
+  oracle_data:
+
+# Host: localhost
+# Port: 1521
+# SID: xe
+# Username: SYSTEM
+# Password: oracle
